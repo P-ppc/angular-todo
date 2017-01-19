@@ -17,7 +17,9 @@
         <div class="main">
             <div class="task-list">
                 <div class="task-item" 
-                    ng-repeat="item in todoList">
+                    ng-repeat="item in todoList"
+                    ng-click="selectTodoItem(item)"
+                    ng-class="{active: selectedItemId === item.id}">
                     <input type="checkbox" name="">
                     <span class="title">{{item.title}}</span>
                     <span class="date">Today</span>
