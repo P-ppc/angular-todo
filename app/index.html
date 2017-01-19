@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="APP">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -7,25 +7,19 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" ng-controller="todoCtrl">
         <div class="top">
-            <input type="text" name="" placeholder="Add task...">
+            <input type="text" 
+                placeholder="Add task..." 
+                ng-model="title"
+                ng-keypress="($event.which === 13) ? addTodo(title):0">
         </div>
         <div class="main">
             <div class="task-list">
-                <div class="task-item active">
+                <div class="task-item" 
+                    ng-repeat="item in todoList">
                     <input type="checkbox" name="">
-                    <span class="title">Pay #office bills</span>
-                    <span class="date">Today</span>
-                </div>
-                <div class="task-item">
-                    <input type="checkbox" name="">
-                    <span class="title">Pay #office bills</span>
-                    <span class="date">Today</span>
-                </div>
-                <div class="task-item">
-                    <input type="checkbox" name="">
-                    <span class="title">Pay #office bills</span>
+                    <span class="title">{{item.title}}</span>
                     <span class="date">Today</span>
                 </div>
             </div>
@@ -58,5 +52,6 @@
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
