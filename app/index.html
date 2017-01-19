@@ -20,12 +20,14 @@
                     ng-repeat="item in todoList"
                     ng-click="selectTodoItem(item)"
                     ng-class="{active: selectedItemId === item.id}">
-                    <input type="checkbox" name="">
-                    <span class="title">{{item.title}}</span>
-                    <span class="date">Today</span>
+                    <input type="checkbox"
+                        ng-checked="isDone(item)"
+                        ng-click="updateStatus(item, $event)">
+                    <span class="title" ng-bind="item.title"></span>
+                    <span class="date" ng-bind="item.status"></span>
                 </div>
             </div>
-            <div class="task-info">
+            <div class="task-info" ng-show="false">
                 <div class="task-info-tab">
                     <span class="active">About</span>
                 </div>
