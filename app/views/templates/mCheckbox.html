@@ -1,9 +1,9 @@
-<label class="m-checkbox">
+<label class="m-checkbox" ng-class="{'is-checked': mChecked()}">
     <span class="m-checkbox-input">
         <span class="m-checkbox-inner"></span>
         <input type="checkbox" 
                 class="m-checkbox-original" 
-                ng-click="click($event)">
+                ng-click="mClick()">
     </span>
     <span class="m-checkbox-label"></span>
 </label>
