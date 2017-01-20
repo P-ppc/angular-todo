@@ -1,7 +1,6 @@
 window.APP = angular.module("APP", ['ngRoute']);
-var app = window.APP;
 
-app.controller('todoCtrl', function ($scope) {
+window.APP.controller('todoCtrl', function ($scope) {
     $scope.todoList = [];
     $scope.DONE_STATUS = "DONE";
     $scope.selectedItemId = null;
@@ -26,9 +25,8 @@ app.controller('todoCtrl', function ($scope) {
     $scope.isDone = function (item) {
         return item.status === $scope.DONE_STATUS;
     };
-    $scope.updateStatus = function (item, $event) {
+    $scope.updateStatus = function (item) {
         item.status = item.status == "OPEN" ? "DONE" : "OPEN";
-        $event.stopPropagation();
     };
 
     function loadTodoList () {

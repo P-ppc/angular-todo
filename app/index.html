@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="lib/bower_components/angular/angular-csp.css">
     <link rel="stylesheet" type="text/css" href="lib/bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -12,7 +13,7 @@
             <input type="text" 
                 placeholder="Add task..." 
                 ng-model="title"
-                ng-keypress="($event.which === 13) ? addTodo(title):0">
+                ng-keypress="($event.which === 13) ? addTodo(title) : 0">
         </div>
         <div class="main">
             <div class="task-list">
@@ -20,6 +21,10 @@
                     ng-repeat="item in todoList"
                     ng-click="selectTodoItem(item)"
                     ng-class="{active: selectedItemId === item.id}">
+                    <div m-checkbox
+                        m-checked="isDone(item)"
+                        m-click="updateStatus(item)">
+                    </div>
                     <input type="checkbox"
                         ng-checked="isDone(item)"
                         ng-click="updateStatus(item, $event)">
@@ -27,7 +32,9 @@
                     <span class="date" ng-bind="item.status"></span>
                 </div>
             </div>
-            <div class="task-info" ng-show="false">
+            <div class="task-info" 
+                ng-show="false" 
+                ng-cloak>
                 <div class="task-info-tab">
                     <span class="active">About</span>
                 </div>
@@ -57,5 +64,6 @@
 <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/directives.js"></script>
 </body>
 </html>
