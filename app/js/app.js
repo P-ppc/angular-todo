@@ -3,23 +3,27 @@ window.APP = angular.module("APP", ['ngRoute']);
 window.APP.controller('todoCtrl', function ($scope) {
     $scope.todoList = [];
     $scope.DONE_STATUS = "DONE";
-    $scope.selectedItemId = null;
+    $scope.selectedItem = null;
+    $scope.title = "";
     var id = 0;
     $scope.addTodo = function (title) {
-        // TODO 避免添加重复任务
-        if (title == "") return;
+        if (title == "" || title.trim() == "") return;
+        var now = moment().format('LLL');
         $scope.todoList.push({
             id: id++,
             title: title,
-            status: "OPEN"
+            description: "this is the description of the task, please change it.",
+            status: "OPEN",
+            createTime: now,
+            updateTime: now
         });
         $scope.title = "";
     };
     $scope.selectTodoItem = function (item) {
-        if ($scope.selectedItemId == item.id) {
-            $scope.selectedItemId = null;
+        if ($scope.selectedItem && $scope.selectedItem.id == item.id) {
+            $scope.selectedItem = null;
         } else {
-            $scope.selectedItemId = item.id;
+            $scope.selectedItem = item;
         }
     };
     $scope.isDone = function (item) {
@@ -28,14 +32,14 @@ window.APP.controller('todoCtrl', function ($scope) {
     $scope.updateStatus = function (item) {
         item.status = item.status == "OPEN" ? "DONE" : "OPEN";
     };
-
-    function loadTodoList () {
-       $scope.todoList = [
-            {id: id++, title: "task one!", status: "DONE"},
-            {id: id++, title: "task two!", status: "DONE"},
-            {id: id++, title: "task three!", status: "DONE"}
-       ]; 
-    }
-    loadTodoList();
+    var now = moment().format('LLL');
+    $scope.todoList.push({
+        id: id++,
+        title: 'init task',
+        description: "this is the description of the task, please change it.",
+        status: "OPEN",
+        createTime: now,
+        updateTime: now
+    });
 });
 

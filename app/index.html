@@ -16,24 +16,22 @@
                 ng-keypress="($event.which === 13) ? addTodo(title) : 0">
         </div>
         <div class="main">
-            <div class="task-list">
+            <div class="task-list" 
+                ng-cloak>
                 <div class="task-item" 
                     ng-repeat="item in todoList"
                     ng-click="selectTodoItem(item)"
-                    ng-class="{active: selectedItemId === item.id}">
+                    ng-class="{active: selectedItem.id === item.id}">
                     <div m-checkbox
                         m-checked="isDone(item)"
                         m-click="updateStatus(item)">
                     </div>
-                    <input type="checkbox"
-                        ng-checked="isDone(item)"
-                        ng-click="updateStatus(item, $event)">
                     <span class="title" ng-bind="item.title"></span>
                     <span class="date" ng-bind="item.status"></span>
                 </div>
             </div>
-            <div class="task-info" 
-                ng-show="false" 
+            <div class="task-info"
+                ng-if="selectedItem != null"
                 ng-cloak>
                 <div class="task-info-tab">
                     <span class="active">About</span>
@@ -41,25 +39,28 @@
                 <div class="task-info-item-list">
                     <div class="task-info-item">
                         <h4>Description</h4>
-                        <p>this is the description! and then ......................this is the description! and then ......................this is the description! and then ......................this is the description! and then ......................this is the description! and then ......................this is the description! and then ......................</p>
+                        <p class="task-desc" 
+                            contenteditable="true"
+                            ng-model="selectedItem.description">
+                        </p>
                     </div>
                     <div class="task-info-item">
                         <h4>status</h4>
-                        <p>Done</p>
+                        <p>{{selectedItem.status}}</p>
                     </div>
                     <div class="task-info-item">
                         <h4>Created at</h4>
-                        <p>Feb 27,2016 10:24 PM</p>
+                        <p>{{selectedItem.createTime}}</p>
                     </div>
                     <div class="task-info-item">
                         <h4>Updated at</h4>
-                        <p>Mar 12,2016 10:24 PM</p>
+                        <p>{{selectedItem.updateTime}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+<script type="text/javascript" src="lib/bower_components/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
