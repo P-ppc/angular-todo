@@ -1,4 +1,4 @@
-window.APP = angular.module("APP", ['ngRoute']);
+window.APP = angular.module("APP", []);
 
 window.APP.controller('todoCtrl', function ($scope) {
     $scope.todoList = [];
