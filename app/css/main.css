@@ -111,6 +111,10 @@ html, body {
     color: #6c6c6c;
 }
 
+.task-info-item .task-status {
+    cursor: pointer;
+}
+
 .task-info-item .task-desc {
     outline: none;
 }
@@ -175,11 +179,11 @@ html, body {
 }
 
 .m-checkbox-original {
-    opacity: 0;
+    // opacity: 0;
     outline: none;
     position: absolute;
     margin-top: 0;
-    left: -999px;
+    // left: -999px;
 }
 
 .m-checkbox-label {

@@ -37,7 +37,7 @@ window.APP.controller('todoCtrl', function ($scope) {
         id: id++,
         title: 'init task',
         description: "this is the description of the task, please change it.",
-        status: "OPEN",
+        status: "DONE",
         createTime: now,
         updateTime: now
     });

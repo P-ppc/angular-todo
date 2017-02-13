@@ -46,7 +46,9 @@
                     </div>
                     <div class="task-info-item">
                         <h4>status</h4>
-                        <p>{{selectedItem.status}}</p>
+                        <p class="task-status"
+                            ng-click="updateStatus(selectedItem)">{{selectedItem.status}}
+                        </p>
                     </div>
                     <div class="task-info-item">
                         <h4>Created at</h4>
